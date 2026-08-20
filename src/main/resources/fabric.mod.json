@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "shieldoptimization",
+  "version": "1.0.0",
+  "name": "Shield Optimization",
+  "description": "Client-side optimization for shield rendering and interaction logic.",
+  "authors": ["EXYL EDITS"],
+  "contact": {},
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "net.exyl.shieldopt.ShieldOptimizerMod"
+    ]
+  },
+    "depends": {
+    "fabricloader": ">=0.18.0",
+    "minecraft": ">=26.1.0",
+    "java": ">=25"
+  }
+
