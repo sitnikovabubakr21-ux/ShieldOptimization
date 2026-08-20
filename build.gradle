@@ -1,18 +1,16 @@
 plugins {
-    id 'net.fabricmc.fabric-loom' version "${loom_version}"
+    id 'net.fabricmc.fabric-loom' version '1.16.1'
     id 'maven-publish'
 }
 
-version = project.version
-group = project.group
+version = '1.0.0'
+group = 'com.shieldoptimization'
 
 base {
-    archivesName = project.name
+    archivesName = 'ShieldOptimization'
 }
 
 repositories {
-    // Loom already provides the essential Minecraft/Fabric repositories.
-    // Add extra repositories here only for third-party dependencies.
 }
 
 loom {
@@ -27,18 +25,16 @@ loom {
 }
 
 dependencies {
-    minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
-    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+    minecraft 'com.mojang:minecraft:26.1.2'
+    implementation 'net.fabricmc:fabric-loader:0.19.3'
+    implementation 'net.fabricmc.fabric-api:fabric-api:0.155.2+26.1.2'
 }
 
 processResources {
-    defversion = project.version
+    inputs.property 'version', project.version
 
-    inputs.property "version", version
-
-    filesMatching("fabric.mod.json") {
-        expand "version": version
+    filesMatching('fabric.mod.json') {
+        expand 'version': project.version
     }
 }
 
@@ -53,5 +49,13 @@ java {
 }
 
 jar {
-    inputs.property "archivesName", project.name
+    inputs.property 'archivesName', project.name
+}
+
+publishing {
+    publications {
+        create('mavenJava', MavenPublication) {
+            from components.java
+        }
+    }
 }
